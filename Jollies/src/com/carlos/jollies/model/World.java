@@ -24,7 +24,7 @@ public class World {
 				}else if(j% 2== 0){
 					jollyEmotion = EMOTION.JOLLY;
 				}
-				Jolly jolly = new Jolly(new Vector2(1f + i, 1f + j), jollyEmotion);
+				Jolly jolly = new Jolly(new Vector2(1f + i + (1.2f*i), 1f + j +(0.2f*j)), jollyEmotion);
 				jolliesList[i][j] = jolly;
 			}
 		}

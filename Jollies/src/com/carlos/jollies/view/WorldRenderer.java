@@ -18,7 +18,7 @@ public class WorldRenderer {
 	public WorldRenderer(World world){
 		this.world = world;
 		this.cam = new OrthographicCamera(10, 7);
-		this.cam.position.set(5, 3.5f, 0);
+		this.cam.position.set(5.5f, 3.5f, 0);
 		this.cam.update();
 	}
 	
@@ -31,7 +31,7 @@ public class WorldRenderer {
 				Rectangle rect = list[i][j].bounds;
 				float x1 = list[i][j].getPosition().position.x + rect.x;
 				float y1 = list[i][j].getPosition().position.y + rect.y;
-				debugRenderer.setColor(new Color(0,0,1,1));
+				debugRenderer.setColor(list[i][j].emotion.getColor());
 				debugRenderer.rect(x1, y1, rect.width, rect.height);
 			}
 		}

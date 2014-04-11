@@ -11,10 +11,10 @@ public class Jolly {
 	public Rectangle bounds;
 	
 	public enum EMOTION{
-		GRUMPY(new Color(0f,06f,0f,1)),
-		SLASH_FACE(new Color(0.7f,0.7f,0.7f,1)),
+		GRUMPY(new Color(0f,08f,0f,1)),
+		SLASH_FACE(new Color(0.9f,0f,0f,1)),
 		POKER_FACE(new Color(0,0,1,1)),
-		SMILE(new Color(0.6f,0.6f,0,1)),
+		SMILE(new Color(0f,0f,0,1)),
 		JOLLY(new Color(1,1,0,1));
 
 	    private EMOTION(Color color){
