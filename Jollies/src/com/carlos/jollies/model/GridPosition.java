@@ -1,18 +1,28 @@
 package com.carlos.jollies.model;
 
-import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
-
 public class GridPosition {
-
-	public static final float SIZE = 1f;
-	public Vector2 position;
-	public Rectangle bounds;
+		
+	public int x;
+	public int y;
 	
-	public GridPosition(Vector2 vector){
-		this.position = vector;
-		bounds = new Rectangle();
-		bounds.height = SIZE;
-		bounds.width = SIZE;
+	public GridPosition(int x,  int y){
+		this.x = x;
+		this.y = y;
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
 	}
 }

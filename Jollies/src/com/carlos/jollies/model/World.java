@@ -1,6 +1,6 @@
 package com.carlos.jollies.model;
 
-import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 import com.carlos.jollies.model.Jolly.EMOTION;
 
 public class World {
@@ -14,17 +14,10 @@ public class World {
 		for(int i = 0; i < 4; i++){
 			for(int j = 0; j < 4;j++){
 				EMOTION jollyEmotion = EMOTION.GRUMPY;
-				if(i % 2 == 0 && j % 2 == 0){
-					jollyEmotion = EMOTION.SLASH_FACE;
-				}
-				else if(i % 3 == 0){
-					jollyEmotion = EMOTION.POKER_FACE;
-				}else if(j%3 == 0){
-					jollyEmotion = EMOTION.SMILE;
-				}else if(j% 2== 0){
+				if(j == 0 && i == 0){
 					jollyEmotion = EMOTION.JOLLY;
 				}
-				Jolly jolly = new Jolly(new Vector2(1f + i + (1.2f*i), 1f + j +(0.2f*j)), jollyEmotion);
+				Jolly jolly = new Jolly(new Vector3(0.9f + (Jolly.WIDTH_SIZE*1.3f*i), 0.5f + (Jolly.HEIGHT_SIZE*1.3f*j), 0), jollyEmotion, new GridPosition(i,  j));
 				jolliesList[i][j] = jolly;
 			}
 		}

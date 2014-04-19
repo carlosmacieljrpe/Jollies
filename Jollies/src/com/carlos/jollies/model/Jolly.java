@@ -2,19 +2,19 @@ package com.carlos.jollies.model;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 
 public class Jolly {
 	
-	public static final float SIZE = 1f;
+	public static final float WIDTH_SIZE = 1.4f;
+	
+	public static final float HEIGHT_SIZE = 0.7f;
 	
 	public Rectangle bounds;
 	
 	public enum EMOTION{
-		GRUMPY(new Color(0f,08f,0f,1)),
-		SLASH_FACE(new Color(0.9f,0f,0f,1)),
-		POKER_FACE(new Color(0,0,1,1)),
-		SMILE(new Color(0f,0f,0,1)),
+		GRUMPY(new Color(0.8f,0.8f,0.8f,1)),
+		SMILE(new Color(0.9f,0.9f,0,1)),
 		JOLLY(new Color(1,1,0,1));
 
 	    private EMOTION(Color color){
@@ -28,28 +28,25 @@ public class Jolly {
 	
 	public EMOTION emotion; 
 	
-	public GridPosition position;
 	
 	public STATE state;
+
+	public GridPosition gridPosition;
 	
 	public enum STATE{
 		INACTIVE, ENLIGHTENED
 	}
 	
-	public Jolly(Vector2 vector, EMOTION emotion){
+	public Jolly(Vector3 vector, EMOTION emotion, GridPosition gridPos){
 		bounds = new Rectangle();
-		bounds.height = SIZE;
-		bounds.width = SIZE*2;
-		position = new GridPosition(vector);
+		bounds.height = HEIGHT_SIZE;
+		bounds.width = WIDTH_SIZE;
+		bounds.x = vector.x;
+		bounds.y = vector.y;
 		this.emotion = emotion;
+		this.gridPosition = gridPos;
 	}
 
-	public GridPosition getPosition() {
-		return position;
-	}
-
-	public void setPosition(GridPosition position) {
-		this.position = position;
-	}
+	
 	
 }

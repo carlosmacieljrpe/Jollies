@@ -17,7 +17,7 @@ public class MainActivity extends AndroidApplication {
 		config.useAccelerometer = false;
 		config.useCompass = false;
 		config.useWakelock = false;
-		initialize(new JolliesGame(), config);
+		initialize(new JolliesGame(this), config);
 
 		
 	}
