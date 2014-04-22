@@ -1,11 +1,10 @@
 package com.carlos.jollies.view;
 
-import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Rectangle;
 import com.carlos.jollies.model.Jolly;
 import com.carlos.jollies.model.World;
@@ -17,6 +16,7 @@ public class WorldRenderer {
 
 	ShapeRenderer debugRenderer = new ShapeRenderer();
 	private SpriteBatch spriteBatch;
+	private AssetManager manager = new AssetManager();
 
 	private int width;
 	private int height;
@@ -33,6 +33,10 @@ public class WorldRenderer {
 		this.cam.position.set(5.5f, 3.5f, 0);
 		this.cam.update();
 		this.spriteBatch = new SpriteBatch();
+		manager.load("images/grumpy2.png", Texture.class);
+		manager.load("images/smiley2.png", Texture.class);
+		manager.load("images/jolly.png", Texture.class);
+		manager.finishLoading();
 	}
 
 	public void render(){
@@ -49,7 +53,7 @@ public class WorldRenderer {
 				Rectangle rect = jolly.bounds;
 				float x1 = jolly.bounds.x;
 				float y1 = jolly.bounds.y;
-				spriteBatch.draw(jolly.emotion.getTexture(), x1 * ppuX, y1 * ppuY, rect.width * ppuX, rect.height * ppuY);
+				spriteBatch.draw((Texture)manager.get(jolly.emotion.getTextureName()), x1 * ppuX, y1 * ppuY, rect.width * ppuX, rect.height * ppuY);
 			}
 		}
 	}

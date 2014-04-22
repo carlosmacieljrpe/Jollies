@@ -9,6 +9,7 @@ import android.widget.Toast;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
@@ -58,7 +59,7 @@ public class GameScreen implements Screen, InputProcessor {
 
 	@Override
 	public void resume() {
-
+		worldRenderer.render();
 	}
 
 	@Override

@@ -20,18 +20,18 @@ public class Jolly {
 	private ArrayList<Sound> sounds;
 
 	public enum EMOTION{
-		GRUMPY(new  Texture(Gdx.files.internal("images/grumpy2.png"))),
-		SMILE(new Texture(Gdx.files.internal("images/smiley2.png"))),
-		JOLLY(new Texture(Gdx.files.internal("images/jolly.png")));
+		GRUMPY("images/grumpy2.png"),
+		SMILE("images/smiley2.png"),
+		JOLLY("images/jolly.png");
 
-		private EMOTION(Texture texture){
-			this.texture = texture;
+		private EMOTION(String paramName){
+			this.textureName = paramName;
 		}
 
-		private final Texture texture;
+		private final String textureName;
 
-		public Texture getTexture(){
-			return this.texture;
+		public String getTextureName(){
+			return this.textureName;
 		}
 	}
 
