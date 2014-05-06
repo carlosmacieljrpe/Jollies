@@ -1,6 +1,8 @@
 package com.carlos.jollies.view;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -53,7 +55,17 @@ public class WorldRenderer {
 				Rectangle rect = jolly.bounds;
 				float x1 = jolly.bounds.x;
 				float y1 = jolly.bounds.y;
-				spriteBatch.draw((Texture)manager.get(jolly.emotion.getTextureName()), x1 * ppuX, y1 * ppuY, rect.width * ppuX, rect.height * ppuY);
+				Texture texture = (Texture)manager.get(jolly.emotion.getTextureName());
+				spriteBatch.draw(texture, x1 * ppuX, y1 * ppuY, rect.width * ppuX, rect.height * ppuY);
+				/*if(jolly.equals(this.)){
+
+				spriteBatch.setBlendFunction(GL20.GL_ONE, GL20.GL_ONE);
+				spriteBatch.setColor(0.3f, 0.3f, 0.3f, 1f);
+				spriteBatch.draw(texture, x1 * ppuX, y1 * ppuY, rect.width * ppuX, rect.height * ppuY);
+				spriteBatch.setColor(1f, 1f, 1f, 1f);
+				spriteBatch.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+				}*/
+
 			}
 		}
 	}

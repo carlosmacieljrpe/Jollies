@@ -42,6 +42,8 @@ public class Jolly {
 
 	public GridPosition gridPosition;
 
+	public boolean selected;
+
 	public enum STATE{
 		INACTIVE, ENLIGHTENED
 	}
@@ -82,5 +84,24 @@ public class Jolly {
 			int index = r.nextInt(this.sounds.size());
 			this.sounds.get(index).play();
 		}
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null)
+            return false;
+        if (obj == this)
+            return true;
+        if (!(obj instanceof Jolly))
+            return false;
+
+        Jolly jolly = (Jolly) obj;
+        if(this.emotion == jolly.emotion &&
+        		this.gridPosition.x == jolly.gridPosition.x &&
+        		this.gridPosition.y == jolly.gridPosition.y){
+        	return true;
+        }else{
+        	return false;
+        }
 	}
 }

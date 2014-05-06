@@ -26,6 +26,7 @@ public class GameScreen implements Screen, InputProcessor {
 	
 	private Jolly touchDownJolly = null;;
 	private Jolly touchUpJolly = null;
+	private Jolly selectedJolly = null;
 	
 	public GameScreen(){
 	}
@@ -108,6 +109,7 @@ public class GameScreen implements Screen, InputProcessor {
 	    touchDownJolly = detectTouchObject(touchPos.x, touchPos.y);
 	    if(touchDownJolly != null){
 	    	touchDownJolly.playSound();
+	    	selectedJolly = touchDownJolly;
 	    }
 		return true;
 	}
