@@ -26,7 +26,6 @@ public class GameScreen implements Screen, InputProcessor {
 	
 	private Jolly touchDownJolly = null;;
 	private Jolly touchUpJolly = null;
-	private Jolly selectedJolly = null;
 	
 	public GameScreen(){
 	}
@@ -109,7 +108,7 @@ public class GameScreen implements Screen, InputProcessor {
 	    touchDownJolly = detectTouchObject(touchPos.x, touchPos.y);
 	    if(touchDownJolly != null){
 	    	touchDownJolly.playSound();
-	    	selectedJolly = touchDownJolly;
+	    	worldRenderer.selectedJolly = touchDownJolly;
 	    }
 		return true;
 	}
@@ -158,6 +157,7 @@ public class GameScreen implements Screen, InputProcessor {
 			if(jollyDown.emotion == EMOTION.JOLLY && areGridNeighbors(jollyDown.gridPosition, jollyUp.gridPosition)){
 				jollyUp.SwapEmotion(EMOTION.JOLLY);
 				jollyDown.SwapEmotion(EMOTION.SMILE);
+				this.worldRenderer.selectedJolly = jollyUp;
 			}
 		}
 	}

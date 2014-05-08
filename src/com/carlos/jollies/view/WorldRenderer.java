@@ -27,7 +27,8 @@ public class WorldRenderer {
 
 	private static final float CAMERA_WIDTH = 10f;
 	private static final float CAMERA_HEIGHT = 7f;
-
+	
+	public Jolly selectedJolly = null;
 
 	public WorldRenderer(World world){
 		this.world = world;
@@ -57,14 +58,14 @@ public class WorldRenderer {
 				float y1 = jolly.bounds.y;
 				Texture texture = (Texture)manager.get(jolly.emotion.getTextureName());
 				spriteBatch.draw(texture, x1 * ppuX, y1 * ppuY, rect.width * ppuX, rect.height * ppuY);
-				/*TODO if(jolly.equals(this.)){
-
-				spriteBatch.setBlendFunction(GL20.GL_ONE, GL20.GL_ONE);
-				spriteBatch.setColor(0.3f, 0.3f, 0.3f, 1f);
-				spriteBatch.draw(texture, x1 * ppuX, y1 * ppuY, rect.width * ppuX, rect.height * ppuY);
-				spriteBatch.setColor(1f, 1f, 1f, 1f);
-				spriteBatch.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
-				}*/
+				
+				if(this.selectedJolly != null && jolly.equals(this.selectedJolly)){
+					spriteBatch.setBlendFunction(GL20.GL_ONE, GL20.GL_ONE);
+					spriteBatch.setColor(0.6f, 0.6f, 1f, 1f);
+					spriteBatch.draw(texture, x1 * ppuX, y1 * ppuY, rect.width * ppuX, rect.height * ppuY);
+					spriteBatch.setColor(1f, 1f, 1f, 1f);
+					spriteBatch.setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+				}
 
 			}
 		}
