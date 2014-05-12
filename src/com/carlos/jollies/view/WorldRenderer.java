@@ -29,12 +29,16 @@ public class WorldRenderer {
 
 	private static final float CAMERA_WIDTH = 10f;
 	private static final float CAMERA_HEIGHT = 7f;
-	
+
 	public Jolly selectedJolly = null;
-	
+
 	public int steps = -1;
-	
+
 	BitmapFont font;
+
+	private int counter;
+
+	private float timeCounter;
 
 	public WorldRenderer(World world){
 		this.world = world;
@@ -55,6 +59,7 @@ public class WorldRenderer {
 		spriteBatch.begin();
 		Jolly[][] list = world.getJolliesList();
 		drawJollies(list, spriteBatch);
+		drawChronometer();
 		spriteBatch.end();
 	}
 
@@ -67,7 +72,7 @@ public class WorldRenderer {
 				float y1 = jolly.bounds.y;
 				Texture texture = (Texture)manager.get(jolly.emotion.getTextureName());
 				spriteBatch.draw(texture, x1 * ppuX, y1 * ppuY, rect.width * ppuX, rect.height * ppuY);
-				
+
 				if(this.selectedJolly != null && jolly.equals(this.selectedJolly)){
 					spriteBatch.setBlendFunction(GL20.GL_ONE, GL20.GL_ONE);
 					spriteBatch.setColor(0.6f, 0.6f, 1f, 1f);
@@ -81,25 +86,27 @@ public class WorldRenderer {
 		if(steps != -1){
 			drawSteps();
 		}
-		/*BitmapFont font = new BitmapFont();
-		font.setColor(Color.BLACK);
-		//font.setScale(1.2f);
-		Matrix4 normalProjection = new Matrix4().setToOrtho2D(0, 0, Gdx.graphics.getWidth(),  Gdx.graphics.getHeight());
-
-		spriteBatch.setProjectionMatrix(normalProjection);
-		float x = world.getJolliesList()[0][0].bounds.x * ppuX;
-		float y = world.getJolliesList()[0][0].bounds.y * ppuY;
-		font.draw(spriteBatch, "my string", x, y);*/
 	}
-	
+
 	public void setSize (int w, int h) {
 		this.width = w;
 		this.height = h;
 		ppuX = (float)width / CAMERA_WIDTH;
 		ppuY = (float)height / CAMERA_HEIGHT;
 	}
-	
+
 	private void drawSteps(){
+		font.setColor(Color.BLACK);
 		font.draw(spriteBatch, this.steps + "", World.OBJECTS_POSITIONS.STEPS_LABEL.x, World.OBJECTS_POSITIONS.STEPS_LABEL.y);
+	}
+
+	private void drawChronometer(){
+		timeCounter += Gdx.graphics.getDeltaTime();
+		if(timeCounter >= 1.0f){
+			timeCounter = 0;
+			counter++;
+		}
+		font.setColor(Color.RED);
+		font.draw(spriteBatch, this.counter + "", World.OBJECTS_POSITIONS.CHONOMETER.x, World.OBJECTS_POSITIONS.CHONOMETER.y);
 	}
 }
