@@ -27,6 +27,8 @@ public class GameScreen implements Screen, InputProcessor {
 	private Jolly touchDownJolly = null;;
 	private Jolly touchUpJolly = null;
 	
+	private int steps = 0;
+	
 	public GameScreen(){
 	}
 
@@ -119,7 +121,6 @@ public class GameScreen implements Screen, InputProcessor {
 			for(int j = 0; j < 4;j++){
 				Jolly jolly = list[i][j];
 				if(pointInRectangle(jolly.bounds, x,y)){
-					Log.i("carlos", jolly.emotion.toString());
 					return jolly;
 				}
 			}
@@ -158,6 +159,8 @@ public class GameScreen implements Screen, InputProcessor {
 				jollyUp.SwapEmotion(EMOTION.JOLLY);
 				jollyDown.SwapEmotion(EMOTION.SMILE);
 				this.worldRenderer.selectedJolly = jollyUp;
+				steps++;
+		    	worldRenderer.steps = steps;
 			}
 		}
 	}

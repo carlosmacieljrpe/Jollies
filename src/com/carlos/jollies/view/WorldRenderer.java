@@ -2,9 +2,11 @@ package com.carlos.jollies.view;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
@@ -29,6 +31,10 @@ public class WorldRenderer {
 	private static final float CAMERA_HEIGHT = 7f;
 	
 	public Jolly selectedJolly = null;
+	
+	public int steps = -1;
+	
+	BitmapFont font;
 
 	public WorldRenderer(World world){
 		this.world = world;
@@ -40,6 +46,9 @@ public class WorldRenderer {
 		manager.load("images/smiley2.png", Texture.class);
 		manager.load("images/jolly.png", Texture.class);
 		manager.finishLoading();
+		font = new BitmapFont();
+		font.setColor(Color.BLACK);
+		font.setScale(1.0f);
 	}
 
 	public void render(){
@@ -69,6 +78,18 @@ public class WorldRenderer {
 
 			}
 		}
+		if(steps != -1){
+			drawSteps();
+		}
+		/*BitmapFont font = new BitmapFont();
+		font.setColor(Color.BLACK);
+		//font.setScale(1.2f);
+		Matrix4 normalProjection = new Matrix4().setToOrtho2D(0, 0, Gdx.graphics.getWidth(),  Gdx.graphics.getHeight());
+
+		spriteBatch.setProjectionMatrix(normalProjection);
+		float x = world.getJolliesList()[0][0].bounds.x * ppuX;
+		float y = world.getJolliesList()[0][0].bounds.y * ppuY;
+		font.draw(spriteBatch, "my string", x, y);*/
 	}
 	
 	public void setSize (int w, int h) {
@@ -77,5 +98,8 @@ public class WorldRenderer {
 		ppuX = (float)width / CAMERA_WIDTH;
 		ppuY = (float)height / CAMERA_HEIGHT;
 	}
-
+	
+	private void drawSteps(){
+		font.draw(spriteBatch, this.steps + "", World.OBJECTS_POSITIONS.STEPS_LABEL.x, World.OBJECTS_POSITIONS.STEPS_LABEL.y);
+	}
 }

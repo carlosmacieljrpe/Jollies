@@ -6,6 +6,20 @@ import com.carlos.jollies.model.Jolly.EMOTION;
 public class World {
 	Jolly[][] jolliesList = new Jolly[4][4];
 	
+	public enum OBJECTS_POSITIONS{
+		STEPS_LABEL(35, 360),
+		CHONOMETER(200, 360);
+		
+		private OBJECTS_POSITIONS(int x, int y){
+			this.x = x;
+			this.y = y;
+		}
+
+		public final int x;
+		
+		public final int y;
+	}
+	
 	public World(){
 		createGameWorld();
 	}
