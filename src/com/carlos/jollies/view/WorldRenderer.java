@@ -8,6 +8,8 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.carlos.jollies.model.Jolly;
@@ -39,6 +41,8 @@ public class WorldRenderer {
 	private int counter;
 
 	private float timeCounter;
+	
+	public static final String FONT_CHARACTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789][_!$%#@|\\/?-+=()*&.;,{}\"´`'<>";
 
 	public WorldRenderer(World world){
 		this.world = world;
@@ -50,9 +54,14 @@ public class WorldRenderer {
 		manager.load("images/smiley2.png", Texture.class);
 		manager.load("images/jolly.png", Texture.class);
 		manager.finishLoading();
-		font = new BitmapFont();
+		FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("data/roboto.ttf"));
+		FreeTypeFontParameter parameter = new FreeTypeFontParameter();
+		parameter.size = 20;
+		parameter.flip = false;
+		font = generator.generateFont(parameter);
+		
 		font.setColor(Color.BLACK);
-		font.setScale(1.0f);
+		generator.dispose();
 	}
 
 	public void render(){
