@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" android:background="@color/white" >
+
+    <TextView
+        android:id="@+id/textViewGameTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:text="Jolly"
+        android:textColor="@color/yellow"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/textViewStartGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewGameTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="134dp"
+        android:text="@string/start_game"
+        android:background="@drawable/menu_button_selector"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+    <Button
+        android:id="@+id/textViewQuitGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewStartGame"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:gravity="center"
+        android:text="@string/exit"
+        android:background="@drawable/menu_button_selector"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+</RelativeLayout>

@@ -1,5 +1,13 @@
 <resources>
-
+    <style name="buttonStyle">
+        <item name="android:padding">4dip</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:textColor">@color/yellow</item>
+    </style>
     
-
+    <style name="buttonPressedStyle">
+        <item name="android:padding">4dip</item>
+        <item name="android:background">@color/yellow</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
 </resources>

@@ -15,6 +15,7 @@ public class MainActivity extends AndroidApplication {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		this.setContentView(R.layout.menu_screen);
 		prefs = this.getSharedPreferences(
 			      "com.carlos.jollies", Context.MODE_PRIVATE);
 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
