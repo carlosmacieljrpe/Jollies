@@ -9,5 +9,8 @@
     <string name="level_1">Level 1</string>
     <string name="level_2">Level 2</string>
     <string name="level_3">Level 3</string>
+    
+    <string name="congratulations">Congratulations</string>
+    <string name="game_over">Game Over</string>
 
 </resources>
