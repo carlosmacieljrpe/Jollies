@@ -14,6 +14,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.carlos.jollies.model.Jolly;
 import com.carlos.jollies.model.World;
+import com.carlos.jollies.model.World.WORLD_STATE;
 
 public class WorldRenderer {
 
@@ -66,10 +67,28 @@ public class WorldRenderer {
 
 	public void render(){
 		spriteBatch.begin();
-		Jolly[][] list = world.getJolliesList();
-		drawJollies(list, spriteBatch);
-		drawChronometer();
+		if(world.worldState == World.WORLD_STATE.RUNNING){
+			Jolly[][] list = world.getJolliesList();
+			drawJollies(list, spriteBatch);
+			drawChronometer();
+		}else if(world.worldState == World.WORLD_STATE.WON){
+			drawCongratulationsScreen();
+		}else if (world.worldState == World.WORLD_STATE.LOST){
+			drawGameOverScreen();
+		}
+		
 		spriteBatch.end();
+	}
+
+	private void drawGameOverScreen() {
+		font.setColor(Color.BLACK);
+		font.draw(spriteBatch, "Game Over", World.OBJECTS_POSITIONS.GAME_OVER_LABEL.x, World.OBJECTS_POSITIONS.GAME_OVER_LABEL.y);
+		font.draw(spriteBatch, "Grumpy won this one :(", World.OBJECTS_POSITIONS.GAME_OVER_LABEL.x -60, World.OBJECTS_POSITIONS.GAME_OVER_LABEL.y-50);
+	}
+
+	private void drawCongratulationsScreen() {
+		font.setColor(Color.BLACK);
+		font.draw(spriteBatch, "Congratulations!", World.OBJECTS_POSITIONS.CONGRATULATIONS_LABEL.x, World.OBJECTS_POSITIONS.CONGRATULATIONS_LABEL.y);
 	}
 
 	private void drawJollies(Jolly[][] list, SpriteBatch renderer){
@@ -107,6 +126,9 @@ public class WorldRenderer {
 	private void drawSteps(){
 		font.setColor(Color.BLACK);
 		font.draw(spriteBatch, this.steps + "", World.OBJECTS_POSITIONS.STEPS_LABEL.x, World.OBJECTS_POSITIONS.STEPS_LABEL.y);
+		if(this.steps +1 == (world.JOLLIES_COLUMN_NUMBER * world.JOLLIES_ROW_NUMBER)){
+			this.world.worldState = WORLD_STATE.WON;
+		}
 	}
 
 	private void drawChronometer(){
@@ -117,5 +139,8 @@ public class WorldRenderer {
 		}
 		font.setColor(Color.RED);
 		font.draw(spriteBatch, this.counter + "", World.OBJECTS_POSITIONS.CHONOMETER.x, World.OBJECTS_POSITIONS.CHONOMETER.y);
+		if(counter > World.TIMEOUT){
+			this.world.worldState = WORLD_STATE.LOST;
+		}
 	}
 }

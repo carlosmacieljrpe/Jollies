@@ -10,9 +10,19 @@ public class World {
 	
 	private Jolly[][] jolliesList;
 	
+	public static final int TIMEOUT = 60;
+	
+	public WORLD_STATE worldState;
+	
+	public enum WORLD_STATE{
+		RUNNING, WON, LOST 
+	}
+	
 	public enum OBJECTS_POSITIONS{
-		STEPS_LABEL(35, 360),
-		CHONOMETER(200, 360);
+		STEPS_LABEL(35, 400),
+		CONGRATULATIONS_LABEL(70, 300),
+		GAME_OVER_LABEL(110, 360),
+		CHONOMETER(200, 400);
 		
 		private OBJECTS_POSITIONS(int x, int y){
 			this.x = x;
@@ -28,6 +38,7 @@ public class World {
 		JOLLIES_ROW_NUMBER = rows;
 		JOLLIES_COLUMN_NUMBER = columns;
 		jolliesList = new Jolly[rows][columns];
+		this.worldState = WORLD_STATE.RUNNING;
 		createGameWorld();
 	}
 	

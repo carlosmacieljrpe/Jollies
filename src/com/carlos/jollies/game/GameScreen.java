@@ -60,7 +60,7 @@ public class GameScreen implements Screen, InputProcessor {
 
 	@Override
 	public void show() {
-		world = new World(2,2);
+		world = new World(4,4);
 		worldRenderer = new WorldRenderer(world);
 		Gdx.input.setInputProcessor(this);
 	}
@@ -150,10 +150,12 @@ public class GameScreen implements Screen, InputProcessor {
 	public void trySwapPositions(Jolly jollyDown, Jolly jollyUp){
 		if(jollyDown != null && jollyUp != null){
 			if(jollyDown.emotion == EMOTION.JOLLY && areGridNeighbors(jollyDown.gridPosition, jollyUp.gridPosition)){
+				if(jollyUp.emotion == EMOTION.GRUMPY){
+					steps++;					
+				}
 				jollyUp.SwapEmotion(EMOTION.JOLLY);
 				jollyDown.SwapEmotion(EMOTION.SMILE);
 				this.worldRenderer.selectedJolly = jollyUp;
-				steps++;
 		    	worldRenderer.steps = steps;
 			}
 		}
