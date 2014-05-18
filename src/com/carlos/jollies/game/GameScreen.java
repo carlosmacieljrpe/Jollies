@@ -2,21 +2,15 @@ package com.carlos.jollies.game;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import android.content.Context;
-import android.util.Log;
-import android.widget.Toast;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.carlos.jollies.model.GridPosition;
 import com.carlos.jollies.model.Jolly;
-import com.carlos.jollies.model.World;
 import com.carlos.jollies.model.Jolly.EMOTION;
+import com.carlos.jollies.model.World;
 import com.carlos.jollies.view.WorldRenderer;
 
 public class GameScreen implements Screen, InputProcessor {
@@ -66,7 +60,7 @@ public class GameScreen implements Screen, InputProcessor {
 
 	@Override
 	public void show() {
-		world = new World();
+		world = new World(4,4);
 		worldRenderer = new WorldRenderer(world);
 		Gdx.input.setInputProcessor(this);
 	}
@@ -117,8 +111,8 @@ public class GameScreen implements Screen, InputProcessor {
 
 	private Jolly detectTouchObject(float x, float y) {
 		Jolly[][] list = world.getJolliesList();
-		for(int i = 0; i < 4; i++){
-			for(int j = 0; j < 4;j++){
+		for(int i = 0; i < list.length; i++){
+			for(int j = 0; j < list[i].length;j++){
 				Jolly jolly = list[i][j];
 				if(pointInRectangle(jolly.bounds, x,y)){
 					return jolly;

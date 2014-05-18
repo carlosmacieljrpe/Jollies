@@ -4,7 +4,11 @@ import com.badlogic.gdx.math.Vector3;
 import com.carlos.jollies.model.Jolly.EMOTION;
 
 public class World {
-	Jolly[][] jolliesList = new Jolly[4][4];
+	public int JOLLIES_ROW_NUMBER;
+	
+	public int JOLLIES_COLUMN_NUMBER;
+	
+	private Jolly[][] jolliesList = new Jolly[4][4];
 	
 	public enum OBJECTS_POSITIONS{
 		STEPS_LABEL(35, 360),
@@ -20,13 +24,15 @@ public class World {
 		public final int y;
 	}
 	
-	public World(){
+	public World(int rows, int columns){
+		JOLLIES_ROW_NUMBER = rows;
+		JOLLIES_COLUMN_NUMBER = columns;
 		createGameWorld();
 	}
 	
 	public void createGameWorld(){
-		for(int i = 0; i < 4; i++){
-			for(int j = 0; j < 4;j++){
+		for(int i = 0; i < JOLLIES_ROW_NUMBER; i++){
+			for(int j = 0; j < JOLLIES_COLUMN_NUMBER;j++){
 				EMOTION jollyEmotion = EMOTION.GRUMPY;
 				if(j == 0 && i == 0){
 					jollyEmotion = EMOTION.JOLLY;
