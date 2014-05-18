@@ -60,7 +60,7 @@ public class GameScreen implements Screen, InputProcessor {
 
 	@Override
 	public void show() {
-		world = new World(4,4);
+		world = new World(2,2);
 		worldRenderer = new WorldRenderer(world);
 		Gdx.input.setInputProcessor(this);
 	}

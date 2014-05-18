@@ -8,7 +8,7 @@ public class World {
 	
 	public int JOLLIES_COLUMN_NUMBER;
 	
-	private Jolly[][] jolliesList = new Jolly[4][4];
+	private Jolly[][] jolliesList;
 	
 	public enum OBJECTS_POSITIONS{
 		STEPS_LABEL(35, 360),
@@ -27,6 +27,7 @@ public class World {
 	public World(int rows, int columns){
 		JOLLIES_ROW_NUMBER = rows;
 		JOLLIES_COLUMN_NUMBER = columns;
+		jolliesList = new Jolly[rows][columns];
 		createGameWorld();
 	}
 	
