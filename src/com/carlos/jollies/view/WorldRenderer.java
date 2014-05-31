@@ -84,6 +84,7 @@ public class WorldRenderer {
 		font.setColor(Color.BLACK);
 		font.draw(spriteBatch, "Game Over", World.OBJECTS_POSITIONS.GAME_OVER_LABEL.x, World.OBJECTS_POSITIONS.GAME_OVER_LABEL.y);
 		font.draw(spriteBatch, "Grumpy won this one :(", World.OBJECTS_POSITIONS.GAME_OVER_LABEL.x -60, World.OBJECTS_POSITIONS.GAME_OVER_LABEL.y-50);
+		this.world.deletePhase();
 	}
 
 	private void drawCongratulationsScreen() {
